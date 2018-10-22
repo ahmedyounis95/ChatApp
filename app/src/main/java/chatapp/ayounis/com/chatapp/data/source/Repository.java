@@ -15,12 +15,14 @@ public class Repository implements DataSource {
     private final DataSource mLocalDataSource;
     private EventListener mPresenterListener;
 
-    private Repository(@NonNull DataSource mRemoteDataSource, @NonNull DataSource mLocalDataSource) {
-        this.mRemoteDataSource = mRemoteDataSource;
-        this.mLocalDataSource = mLocalDataSource;
+    private Repository(@NonNull DataSource remoteDataSource,
+                       @NonNull DataSource localDataSource) {
+        mRemoteDataSource = remoteDataSource;
+        mLocalDataSource = localDataSource;
         mRemoteDataSource.setEventListener(this);
     }
-    public static Repository getInstance(@NonNull DataSource remoteDataSource,@NonNull DataSource localDataSource){
+    public static Repository getInstance(@NonNull DataSource remoteDataSource,
+                                         @NonNull DataSource localDataSource){
         if(mInstance == null){
             mInstance = new Repository(remoteDataSource,localDataSource);
         }

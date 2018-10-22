@@ -1,6 +1,8 @@
 package chatapp.ayounis.com.chatapp;
 
 import android.app.Application;
+import android.arch.lifecycle.ProcessLifecycleOwner;
+
 import chatapp.ayounis.com.chatapp.util.AppLifeCycleObserver;
 
 public class ChatApp extends Application {
@@ -10,10 +12,8 @@ public class ChatApp extends Application {
 
         AppLifeCycleObserver appLifeCycleObserver = new AppLifeCycleObserver(getApplicationContext());
 
-       /* ProcessLifecycleOwner.get()
+        ProcessLifecycleOwner.get()
                 .getLifecycle()
                 .addObserver(appLifeCycleObserver);
-*/
-
     }
 }

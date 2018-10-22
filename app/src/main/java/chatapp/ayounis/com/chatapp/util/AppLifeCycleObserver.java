@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import java.net.URISyntaxException;
 
-import chatapp.ayounis.com.chatapp.eventservice.AppEventService;
+import chatapp.ayounis.com.chatapp.eventservice.EventServiceImpl;
 
 public class AppLifeCycleObserver implements LifecycleObserver {
     private Context mContext;
@@ -20,12 +20,12 @@ public class AppLifeCycleObserver implements LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     public void onEnterForeground(){
         try{
-            AppEventService.getInstance().connect(User.getUsername());
+            EventServiceImpl.getInstance().connect(User.getUsername());
         }catch (URISyntaxException e){
             Toast.makeText(mContext, "Failed to connect to chat server", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    public void onEnterBackground(){AppEventService.getInstance().disconnect();}
+    public void onEnterBackground(){EventServiceImpl.getInstance().disconnect();}
 }

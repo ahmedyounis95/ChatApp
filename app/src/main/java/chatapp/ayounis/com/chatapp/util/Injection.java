@@ -9,7 +9,7 @@ import chatapp.ayounis.com.chatapp.util.schedulers.BaseSchedulerProvider;
 import chatapp.ayounis.com.chatapp.util.schedulers.SchedulerProvider;
 
 public class Injection {
-    public static Repository provideRepostiory(Context context){
+    public static Repository providesRepository(Context context){
         return Repository.getInstance(RemoteDataSource.getInstance(),
                 LocalDataSource.getInstance());
     }
